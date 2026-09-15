@@ -4,6 +4,7 @@
 
 #ifndef PETSIM_PETSIM_H
 #define PETSIM_PETSIM_H
+#include <string>
 using namespace std;
 
 
@@ -11,9 +12,27 @@ class PetSim {
 
     public:
 
+    PetSim();
+    ~PetSim();
+
+    PetSim(string name, int hungerLevel, int boredomLevel);
+
+    void setName(string name);
+
+    void setHungerLevel(int hungerLevel);
+
+    void setBoredomLevel(int boredomLevel);
+
+    string getName();
+
+    int getHungerLevel();
+
+    int getBoredomLevel();
+
     private:
     int hungerLevel;
-    int
+    int boredomLevel;
+    string name;
 
 };
 
