@@ -12,27 +12,37 @@ class PetSim {
 
     public:
 
-    PetSim();
-    ~PetSim();
-
-    PetSim(string name, int hungerLevel, int boredomLevel);
+    PetSim(int hungerLevel, int boredomLevel, string name);
 
     void setName(string name);
 
-    void setHungerLevel(int hungerLevel);
-
-    void setBoredomLevel(int boredomLevel);
-
     string getName();
+
+    void setHungerLevel(int hungerLevel);
 
     int getHungerLevel();
 
+    void setBoredomLevel(int boredomLevel);
+
     int getBoredomLevel();
+
+    void talk();
+
+    void feedPet(int foodAmount = 3);
+
+    void play(int playAmount = 3);
+
+    void displayPetBehavior();
+
+    void menu();
 
     private:
     int hungerLevel;
     int boredomLevel;
     string name;
+
+    int petMood();
+    void passTime(int time = 1);
 
 };
 
