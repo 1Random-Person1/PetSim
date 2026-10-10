@@ -15,6 +15,9 @@ PetSim::PetSim(int hungerLevel, int boredomLevel, string name) {
     setBoredomLevel(boredomLevel);
 }
 
+int maxVal = 100;
+int lowVal = 0;
+
 void PetSim::setName(string name) {
     this->name = name;
 }
@@ -39,7 +42,26 @@ int PetSim::getBoredomLevel() {
     return boredomLevel;
 }
 
+int PetSim::petMood() {
+
+    return getHungerLevel() + getBoredomLevel();
+
+}
+
 void PetSim::talk() {
+
+    int mood = petMood();
+
+    if (mood < 7 && mood <= lowVal) {
+        cout << getName() << " is feeling happy." << endl;
+    } else if (mood >= 7 and mood < 16) {
+        cout << getName() << " is feeling okay." << endl;
+    } else if (mood >= 16 and mood <= 21) {
+        cout << getName() << " is feeling frustrated." << endl;
+    } else if (mood > 21 and mood <= maxVal) {
+        cout << getName() << " is feeling mad" << endl;
+    }
+    passTime();
 
 }
 
@@ -51,12 +73,9 @@ void PetSim::play(int playAmount) {
 
 }
 
-int PetSim::petMood() {
-    return getHungerLevel() + getBoredomLevel();
-
-}
-
 void PetSim::passTime(int time) {
+
+    time += 1;
 
 }
 
@@ -73,34 +92,39 @@ void PetSim::displayPetBehavior() {
 }
 
 void PetSim::menu() {
+
     int choice;
-    cout << "Please select an option: 1 - Talk | 2 - Feed | 3- Play | 4 - Exit" << endl;
+    bool run = true;
 
-    cin >> choice;
+    while (run != false) {
 
-    switch (choice) {
+        cout << "Please select an option: 1 - Talk | 2 - Feed | 3- Play | 4 - Exit" << endl;
 
-        case 1:
-            cout << getHungerLevel() << endl;
-            cout << getBoredomLevel() << endl;
-            cout << getName() << endl;
-            break;
+        cin >> choice;
 
-        case 2:
+        switch (choice) {
 
-            break;
+            case 1:
 
-        case 3:
+                talk();
 
-            break;
+                break;
 
-        case 4:
+            case 2:
 
-            break;
+                break;
 
-        default:
+            case 3:
 
-            break;
+                break;
+
+            case 4:
+
+                run = false;
+
+            default:
+
+                break;
+        }
     }
-
 }
