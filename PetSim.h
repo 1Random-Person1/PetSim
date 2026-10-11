@@ -32,9 +32,9 @@ class PetSim {
 
     void talk();
 
-    void feedPet(int foodAmount = 4);
+    void feedPet(int foodAmount = 1);
 
-    void play(int playAmount = 4);
+    void play(int playAmount = 1);
 
     void displayPetBehavior();
 
