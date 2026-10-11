@@ -24,7 +24,14 @@ string PetSim::getName() {
 }
 
 void PetSim::setHungerLevel(int hungerLevel) {
+
     this->hungerLevel = hungerLevel;
+
+    if (this->hungerLevel > 100) {
+        this->hungerLevel = 100;
+    } else if (this->hungerLevel < 0) {
+        this->hungerLevel = 0;
+    }
 }
 
 int PetSim::getHungerLevel() {
@@ -32,7 +39,14 @@ int PetSim::getHungerLevel() {
 }
 
 void PetSim::setBoredomLevel(int boredomLevel) {
+
     this->boredomLevel = boredomLevel;
+
+    if (this->boredomLevel > 100) {
+        this->boredomLevel = 100;
+    } else if (this->boredomLevel < 0) {
+        this->boredomLevel = 0;
+    }
 }
 
 int PetSim::getBoredomLevel() {
@@ -58,7 +72,10 @@ void PetSim::talk() {
     } else if (mood > 21) {
         cout << getName() << " is feeling mad" << endl;
     }
+
     passTime();
+
+    displayPetBehavior();
 
 }
 
@@ -74,6 +91,8 @@ void PetSim::feedPet(int foodAmount) {
 
     passTime();
 
+    displayPetBehavior();
+
 }
 
 void PetSim::play(int playAmount) {
@@ -88,6 +107,8 @@ void PetSim::play(int playAmount) {
 
     passTime();
 
+    displayPetBehavior();
+
 
 }
 
@@ -100,13 +121,25 @@ void PetSim::passTime(int time) {
 
 void PetSim::displayPetBehavior() {
 
-    talk();
+    cout << "Hunger Level: " << getHungerLevel() << endl;
 
-    cout << getHungerLevel() << endl;
+    cout << "Boredom Level: " << getBoredomLevel() << endl;
 
-    cout << getBoredomLevel() << endl;
+    if (getHungerLevel() && getBoredomLevel() < 3) {
+        cout << getName() << " is not hungry or bored." << endl;
+    }
 
+    if (getBoredomLevel() > 3 && getBoredomLevel() < 11) {
+        cout << getName() << " is a little bored." << endl;
+    } else if (getBoredomLevel() >= 11) {
+        cout << getName() << " is very bored." << endl;
+    }
 
+    if (getHungerLevel() > 3 && getHungerLevel() < 11) {
+        cout << getName() << " is a little hungry." << endl;
+    } else if (getHungerLevel() >= 11) {
+        cout << getName() << " is very hungry." << endl;
+    }
 
 }
 
@@ -125,7 +158,7 @@ void PetSim::menu() {
 
             case 1:
 
-                displayPetBehavior();
+                talk();
 
                 break;
 
