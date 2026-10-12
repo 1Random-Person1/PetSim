@@ -170,36 +170,40 @@ void PetSim::displayPetBehavior() {
 //Prints a menu for the user, allowing them to select a specific case
 void PetSim::menu() {
 
-    int choice;
-    bool run = true;
+    enum {Talk = 1, Feed = 2, Play = 3, Exit = 4};
+    int choice = 0;
 
-    while (run != false) {
+    while (choice != Exit) {
 
         cout << "Please select an option: 1 - Talk | 2 - Feed | 3- Play | 4 - Exit" << endl;
 
-        cin >> choice;
+        if (!(cin >> choice)) {
+            cout << "Invalid input, please only use 1-4" << endl;
+            break;
+        }
 
         switch (choice) {
 
-            case 1:
+            case Talk:
 
                 talk();
 
                 break;
 
-            case 2:
+            case Feed:
 
                 feedPet();
                 break;
 
-            case 3:
+            case Play:
 
                 play();
                 break;
 
-            case 4:
+            case Exit:
 
-                run = false;
+                cout << "Ended program";
+
                 break;
 
             default:
