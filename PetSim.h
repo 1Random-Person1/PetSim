@@ -1,12 +1,10 @@
-//
-// Created by admin on 9/15/2026.
-//
+/*PetSim class that declares the functions that will be used for the project */
 
 #ifndef PETSIM_PETSIM_H
 #define PETSIM_PETSIM_H
 #include <string>
 #include <iostream>
-#include <limits>
+
 using namespace std;
 
 
@@ -15,8 +13,6 @@ class PetSim {
     public:
 
     PetSim(int hungerLevel, int boredomLevel, string name);
-
-    PetSim();
 
     void setName(string name);
 
@@ -49,6 +45,5 @@ class PetSim {
     void passTime(int time = 1);
 
 };
-
 
 #endif //PETSIM_PETSIM_H
